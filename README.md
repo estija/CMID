@@ -1,12 +1,12 @@
 # CMID
-Code for Conditional Mutual Information-Debiasing (CMID) method to improve OOD generalization and subrgoup robustness.
+Code for Conditional Mutual Information-Debiasing (CMID) method to improve OOD generalization and subrgoup robustness. (The base code comes from the [`group_DRO`](https://github.com/kohpangwei/group_DRO)  implementation.)
 ### Subgroup Robustness Experiments
 
 #### Install dependencies.
    The code uses `python 3.6.8`. Dependencies can be installed by using: 
 
    ```
-   pip install -r requirements.txt`.
+   pip install -r requirements.txt
    ```
 
 
