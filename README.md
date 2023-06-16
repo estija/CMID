@@ -55,39 +55,39 @@ Code for Conditional Mutual Information-Debiasing (CMID) method to improve OOD g
    - Waterbirds: 
 
      ```
-     python /cmid-code/run_expt.py --log_dir /cmid-code/log-wb -s confounder -d CUB -t waterbird_complete95 -c forest2water2 --lr 0.0005 --batch_size 128 --weight_decay 0.0001 --model resnet50 --n_epochs 100 --cmi_reg --log_every 20 --reg_st 20.0 --cmistinc --scale 4
+     python run_expt.py --log_dir /CMID/log-wb -s confounder -d CUB -t waterbird_complete95 -c forest2water2 --lr 0.0005 --batch_size 128 --weight_decay 0.0001 --model resnet50 --n_epochs 100 --cmi_reg --log_every 20 --reg_st 20.0 --cmistinc --scale 4
      ```
 
      ```
-     python parse_log_file.py --log_dir /cmid-code/log-wb --num_groups 4
+     python parse_log_file.py --log_dir /CMID/log-wb --num_groups 4
      ```    
    
    - CelebA:
 
      ```
-     python /cmid-code/run_expt.py --log_dir /cmid-code/log-cel -s confounder -d CelebA -t Blond_Hair -c Male --lr 0.0003 --batch_size 128 --weight_decay 0.001 --model resnet50 --n_epochs 50 --cmi_reg --log_every 20 --reg_st 10.0 --cmistinc --scale 5
+     python run_expt.py --log_dir /CMID/log-cel -s confounder -d CelebA -t Blond_Hair -c Male --lr 0.0003 --batch_size 128 --weight_decay 0.001 --model resnet50 --n_epochs 50 --cmi_reg --log_every 20 --reg_st 10.0 --cmistinc --scale 5
      ```
 
      ```
-     python parse_log_file.py --log_dir /cmid-code/log-cel --num_groups 4
+     python parse_log_file.py --log_dir /CMID/log-cel --num_groups 4
      ```
    
    - MultiNLI:
 
      ```
-     python /cmid-code/run_expt.py --log_dir /cmid-code/log-mnli -s confounder -d MultiNLI -t gold_label_random -c sentence2_has_negation --lr 5e-05 --batch_size 32 --weight_decay 0 --model bert --n_epochs 5 --cmi_reg --reg_st 75.0 --cmistinc --lr1 0.005
+     python /run_expt.py --log_dir /CMID/log-mnli -s confounder -d MultiNLI -t gold_label_random -c sentence2_has_negation --lr 5e-05 --batch_size 32 --weight_decay 0 --model bert --n_epochs 5 --cmi_reg --reg_st 75.0 --cmistinc --lr1 0.005
      ```
 
-     ```python parse_log_file.py --log_dir /cmid-code/log-mnli --num_groups 6```
+     ```python parse_log_file.py --log_dir /CMID/log-mnli --num_groups 6```
    
    - CivilComments:
 
      ```
-     python /cmid-code/run_expt.py --log_dir /cmid-code/log-ccom -s confounder -d CivComMod -t toxicity -c identity_any --lr 0.00001 --batch_size 32 --weight_decay 0.001 --model bert-base-uncased --n_epochs 10 --cmi_reg --reg_st 25.0 --cmistinc --lr1 0.0001
+     python run_expt.py --log_dir /CMID/log-ccom -s confounder -d CivComMod -t toxicity -c identity_any --lr 0.00001 --batch_size 32 --weight_decay 0.001 --model bert-base-uncased --n_epochs 10 --cmi_reg --reg_st 25.0 --cmistinc --lr1 0.0001
      ```
 
      ```
-     python parse_log_file.py --log_dir /cmid-code/log-ccom --num_groups 16
+     python parse_log_file.py --log_dir /CMID/log-ccom --num_groups 16
      ```
    
    
