@@ -1,20 +1,23 @@
 # CMID
-
+Code for Conditional Mutual Information-Debiasing (CMID) method to improve OOD generalization and subrgoup robustness.
 ### Subgroup Robustness Experiments
 
-1. Install dependencies.
+#### Install dependencies.
    The code uses `python 3.6.8`. Dependencies can be installed by using: 
 
+   ```
+   pip install -r requirements.txt`.
+   ```
 
-   `pip install -r requirements.txt`.
 
-
-2. Specify path name and download datasets. (Check [this link](https://github.com/kohpangwei/group_DRO) for more details.)
+#### Specify path name and download datasets. 
+   (Check [this link](https://github.com/kohpangwei/group_DRO) for more details.)
+   
    Change the `root_dir` variable in `data/data.py`. Datasets will be stored in the location specified by `root_dir`.
 
    - Waterbirds:
      The code expects the following files/folders in the `[root_dir]/cub` directory:
-     `data/waterbird_complete95_forest2water2/`.
+     - `data/waterbird_complete95_forest2water2/`
 
 
      A tarball of this dataset can be downloaded from [this link](https://nlp.stanford.edu/data/dro/waterbird_complete95_forest2water2.tar.gz). 
@@ -46,31 +49,45 @@
      A tarball of this dataset can be downloaded from [this link](https://drive.google.com/file/d/1ioV8bf5jpEhXW2UTN41z-0uxUqJk5UT6/view?usp=share_link).
 
   
-3. Run code and infer results.
+#### Run code and infer results.
    The main files to run the experiment and infer results are `run_expt.py` and `parse_log_file.py`, respectively. The specific commands are listed below:
    
    - Waterbirds: 
 
-     `python /cmid-code/run_expt.py --log_dir /cmid-code/log-wb -s confounder -d CUB -t waterbird_complete95 -c forest2water2 --lr 0.0005 --batch_size 128 --weight_decay 0.0001 --model resnet50 --n_epochs 100 --cmi_reg --log_every 20 --reg_st 20.0 --cmistinc --scale 4`
+     ```
+     python /cmid-code/run_expt.py --log_dir /cmid-code/log-wb -s confounder -d CUB -t waterbird_complete95 -c forest2water2 --lr 0.0005 --batch_size 128 --weight_decay 0.0001 --model resnet50 --n_epochs 100 --cmi_reg --log_every 20 --reg_st 20.0 --cmistinc --scale 4
+     ```
 
-     `python parse_log_file.py --log_dir /cmid-code/log-wb --num_groups 4`    
+     ```
+     python parse_log_file.py --log_dir /cmid-code/log-wb --num_groups 4
+     ```    
    
    - CelebA:
 
-     `python /cmid-code/run_expt.py --log_dir /cmid-code/log-cel -s confounder -d CelebA -t Blond_Hair -c Male --lr 0.0003 --batch_size 128 --weight_decay 0.001 --model resnet50 --n_epochs 50 --cmi_reg --log_every 20 --reg_st 10.0 --cmistinc --scale 5`
+     ```
+     python /cmid-code/run_expt.py --log_dir /cmid-code/log-cel -s confounder -d CelebA -t Blond_Hair -c Male --lr 0.0003 --batch_size 128 --weight_decay 0.001 --model resnet50 --n_epochs 50 --cmi_reg --log_every 20 --reg_st 10.0 --cmistinc --scale 5
+     ```
 
-     `python parse_log_file.py --log_dir /cmid-code/log-cel --num_groups 4`
+     ```
+     python parse_log_file.py --log_dir /cmid-code/log-cel --num_groups 4
+     ```
    
    - MultiNLI:
 
-     `python /cmid-code/run_expt.py --log_dir /cmid-code/log-mnli -s confounder -d MultiNLI -t gold_label_random -c sentence2_has_negation --lr 5e-05 --batch_size 32 --weight_decay 0 --model bert --n_epochs 5 --cmi_reg --reg_st 75.0 --cmistinc --lr1 0.005`
+     ```
+     python /cmid-code/run_expt.py --log_dir /cmid-code/log-mnli -s confounder -d MultiNLI -t gold_label_random -c sentence2_has_negation --lr 5e-05 --batch_size 32 --weight_decay 0 --model bert --n_epochs 5 --cmi_reg --reg_st 75.0 --cmistinc --lr1 0.005
+     ```
 
-     `python parse_log_file.py --log_dir /cmid-code/log-mnli --num_groups 6`
+     ```python parse_log_file.py --log_dir /cmid-code/log-mnli --num_groups 6```
    
    - CivilComments:
 
-     `python /cmid-code/run_expt.py --log_dir /cmid-code/log-ccom -s confounder -d CivComMod -t toxicity -c identity_any --lr 0.00001 --batch_size 32 --weight_decay 0.001 --model bert-base-uncased --n_epochs 10 --cmi_reg --reg_st 25.0 --cmistinc --lr1 0.0001`
+     ```
+     python /cmid-code/run_expt.py --log_dir /cmid-code/log-ccom -s confounder -d CivComMod -t toxicity -c identity_any --lr 0.00001 --batch_size 32 --weight_decay 0.001 --model bert-base-uncased --n_epochs 10 --cmi_reg --reg_st 25.0 --cmistinc --lr1 0.0001
+     ```
 
-     `python parse_log_file.py --log_dir /cmid-code/log-ccom --num_groups 16`
+     ```
+     python parse_log_file.py --log_dir /cmid-code/log-ccom --num_groups 16
+     ```
    
    
