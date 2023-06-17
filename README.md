@@ -1,5 +1,5 @@
 # CMID
-Code for Conditional Mutual Information-Debiasing (CMID) method to improve OOD generalization and subrgoup robustness. (The base code comes from the [`group_DRO`](https://github.com/kohpangwei/group_DRO)  implementation.)
+Code for Conditional Mutual Information-Debiasing (CMID) method to improve OOD generalization and subgroup robustness. (The base code comes from the [`group_DRO`](https://github.com/kohpangwei/group_DRO)  implementation.)
 ### Subgroup Robustness Experiments
 Experiments on Waterbirds, CelebA, MultiNLI and CivilComments datasets.
 #### Install dependencies.
