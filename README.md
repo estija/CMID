@@ -78,7 +78,9 @@ Experiments on Waterbirds, CelebA, MultiNLI and CivilComments datasets.
      python /run_expt.py --log_dir /CMID/log-mnli -s confounder -d MultiNLI -t gold_label_random -c sentence2_has_negation --lr 5e-05 --batch_size 32 --weight_decay 0 --model bert --n_epochs 5 --cmi_reg --reg_st 75.0 --cmistinc --lr1 0.005
      ```
 
-     ```python parse_log_file.py --log_dir /CMID/log-mnli --num_groups 6```
+     ```
+     python parse_log_file.py --log_dir /CMID/log-mnli --num_groups 6
+     ```
    
    - CivilComments:
 
