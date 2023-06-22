@@ -98,6 +98,7 @@ Experiments on Waterbirds, CelebA, MultiNLI, CivilComments, and Camelyon dataset
      ```
 
    - Camelyon:
+   
      We use a different file for Camelyon to use [Wilds](https://github.com/p-lambda/wilds) dataloading. To run it, go into the `./camelyon` directory and run the following sample command, which will output `camelyon.txt` in the same directory containing results.
      ```
      python camelyon.py --cmi_reg --epochs 5 --epochs2 10 --lr 0.0001 --lr1 0.0001 --weight_decay 0.01 --reg_st 0.5 --batch_size 32 &> camelyon.txt
