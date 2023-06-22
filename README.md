@@ -1,7 +1,7 @@
 # CMID
 Code for Conditional Mutual Information-Debiasing (CMID) method to improve OOD generalization and subgroup robustness. (The base code comes from the [`group_DRO`](https://github.com/kohpangwei/group_DRO)  implementation.)
 ### Subgroup Robustness Experiments
-Experiments on Waterbirds, CelebA, MultiNLI and CivilComments datasets.
+Experiments on Waterbirds, CelebA, MultiNLI, CivilComments, and Camelyon datasets.
 #### Install dependencies.
    The code uses `python 3.6.8`. Dependencies can be installed by using: 
 
@@ -48,6 +48,11 @@ Experiments on Waterbirds, CelebA, MultiNLI and CivilComments datasets.
      
      A tarball of this dataset can be downloaded from [this link](https://drive.google.com/file/d/1ioV8bf5jpEhXW2UTN41z-0uxUqJk5UT6/view?usp=share_link).
 
+   - CivilComments:
+     The code expects the following files/folders in the `./camelyon` directory.
+     - `data/camelyon17_v1.0/metadata.csv`
+     - `data/camelyon17_v1.0/patches/`
+     Including all the patch data. If these files do not exist, the code will download them here during run time.
   
 #### Run code and infer results.
    The main files to run the experiment and infer results are `run_expt.py` and `parse_log_file.py`, respectively. The specific commands are listed below:
@@ -91,5 +96,10 @@ Experiments on Waterbirds, CelebA, MultiNLI and CivilComments datasets.
      ```
      python parse_log_file.py --log_dir /CMID/log-ccom --num_groups 16
      ```
-   
+
+   - Camelyon:
+     We use a different file for Camelyon to use [Wilds](https://github.com/p-lambda/wilds) dataloading. To run it, go into the `./camelyon` directory and run the following sample command, which will output `camelyon.txt` in the same directory containing results.
+     ```
+     python camelyon.py --cmi_reg --epochs 5 --epochs2 10 --lr 0.0001 --lr1 0.0001 --weight_decay 0.01 --reg_st 0.5 --batch_size 32 &> camelyon.txt
+     ```
    
