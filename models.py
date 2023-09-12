@@ -66,9 +66,9 @@ class ConvNet1D(nn.Module):
 
         return torch.squeeze(x)
 
-class LinearReg(nn.Module):
-  def __init__(self, inputSize = 224*224*3, outputSize=1, bias=False):
-        super(LinearReg, self).__init__()
+class LinearModel(nn.Module):
+  def __init__(self, inputSize = 224*224*3, outputSize=1, bias=True):
+        super(LinearModel, self).__init__()
         self.inputSize = inputSize
         self.linear = torch.nn.Linear(inputSize, outputSize, bias = bias)
         #self.apply(self._init_weights)

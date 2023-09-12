@@ -120,8 +120,8 @@ def est_density_mul(X, Y, Z, device, round_=True, bin_=False, args = None, nc=3)
       X = torch.round(X).int()
       Y = torch.round(Y).int()
      else:
-      X = torch.sigmoid(12.5*(X-0.5))
-      Y = torch.sigmoid(12.5*(Y-0.5))
+      X = torch.nn.Softmax(dim=1)(12.5*X)  
+      Y = torch.nn.Softmax(dim=1)(12.5*Y) 
     Z = torch.round(Z.float()).int()
     
     #if args is not None:

@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 import torchvision
 
-from models import model_attributes, ConvNet1, ConvNet2, FCN, ConvNet1D
+from models import model_attributes, LinearModel, ConvNet1, ConvNet2, FCN, ConvNet1D
 from data.data import dataset_attributes, shift_types, prepare_data, log_data
 from utils import set_seed, Logger, CSVBatchLogger, log_args, get_balanced_data, get_balanced_data_gen
 from train import train, train2
@@ -50,13 +50,14 @@ def main():
     parser.add_argument('--cmistinc', default=False, action='store_true')
     parser.add_argument('--scale', default=10, type=int)
     parser.add_argument('--lr1', default=1e-5, type=float)
-    parser.add_argument('--ep1', default=20, type=int)
+    parser.add_argument('--ep1', default=5, type=int)
     parser.add_argument('--ptft', default=False, action='store_true')
     parser.add_argument('--repeat', default=False, action='store_true')
     parser.add_argument('--pt_ep', default=30, type=int)
     parser.add_argument('--groups', default=False, action='store_true')
     parser.add_argument('--gdro_alt', default=False, action='store_true')
-    parser.add_argument('--th', default=1000, type=int)
+    parser.add_argument('--th', default=100, type=int)
+    parser.add_argument('--model_sim', default=1, type=int) #0-linear, 1-shallow, 2-shallow2, else-full
 
     # Model
     parser.add_argument(
@@ -247,10 +248,18 @@ def main():
               model2 = ConvNet1D(300)   
               crit = nn.BCEWithLogitsLoss()         
         else:
-            if args.dataset == 'CelebA':
-              model2 = ConvNet2()
+            #crit = nn.BCEWithLogitsLoss()
+            if args.model_sim==0:
+              model2 = LinearModel(bias=False)
+            elif args.model_sim==1:
+              if args.dataset == 'CelebA':
+                model2 = ConvNet2()
+              else:
+                model2 = ConvNet1()
             else:
-              model2 = ConvNet1()
+              model2 = torchvision.models.resnet50(pretrained=pretrained)
+              d2 = model2.fc.in_features
+              model2.fc = nn.Linear(d, 1)
             crit = nn.BCEWithLogitsLoss()
             #model2 = ConvNet()
         train2(model2, crit, data2,  args)
