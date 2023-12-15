@@ -1,5 +1,5 @@
 # CMID
-Code for Conditional Mutual Information-Debiasing (CMID) method to improve OOD generalization and subgroup robustness. (The base code comes from the [`group_DRO`](https://github.com/kohpangwei/group_DRO)  implementation.)
+This is the code for the Conditional Mutual Information-Debiasing (CMID) method proposed in the paper **[Mitigating Simplicity Bias in Deep Learning for Improved OOD Generalization and Robustness](https://arxiv.org/abs/2310.06161)** by *Bhavya Vasudeva*, *Kameron Shahabi* and *Vatsal Sharan*. (The base code comes from the [`group_DRO`](https://github.com/kohpangwei/group_DRO)  implementation.)
 
 ### Install dependencies
    The code uses `python 3.6.8`. Dependencies can be installed by using: 
@@ -105,4 +105,16 @@ We use a different file for Camelyon to use [Wilds](https://github.com/p-lambda/
 ```
 python camelyon.py --cmi_reg --epochs 5 --epochs2 10 --lr 0.0001 --lr1 0.0001 --weight_decay 0.01 --reg_st 0.5 --batch_size 32 &> camelyon.txt
 ```
-   
+
+## Citation
+If you find our research useful, please cite our work.
+```
+@misc{vasudeva2023mitigating,
+      title={Mitigating Simplicity Bias in Deep Learning for Improved OOD Generalization and Robustness}, 
+      author={Bhavya Vasudeva and Kameron Shahabi and Vatsal Sharan},
+      year={2023},
+      eprint={2310.06161},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+```
