@@ -109,12 +109,14 @@ python camelyon.py --cmi_reg --epochs 5 --epochs2 10 --lr 0.0001 --lr1 0.0001 --
 ## Citation
 If you find our research useful, please cite our work.
 ```
-@misc{vasudeva2023mitigating,
-      title={Mitigating Simplicity Bias in Deep Learning for Improved OOD Generalization and Robustness}, 
-      author={Bhavya Vasudeva and Kameron Shahabi and Vatsal Sharan},
-      year={2023},
-      eprint={2310.06161},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@article{
+vasudeva2024mitigating,
+title={Mitigating Simplicity Bias in Deep Learning for Improved {OOD} Generalization and Robustness},
+author={Bhavya Vasudeva and Kameron Shahabi and Vatsal Sharan},
+journal={Transactions on Machine Learning Research},
+issn={2835-8856},
+year={2024},
+url={https://openreview.net/forum?id=XccFHGakyU},
+note={}
 }
 ```
